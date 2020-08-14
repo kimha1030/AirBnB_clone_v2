@@ -13,6 +13,12 @@ class test_review(test_basemodel):
         self.name = "Review"
         self.value = Review
 
+    def test_review_pep8(self):
+        """test_base_pep8 test"""
+        pep8style = pep8.StyleGuide(quiet=True)
+        result = pep8style.check_files(['./models/review.py'])
+        self.assertEqual(result.total_errors, 0)
+
     def test_place_id(self):
         """ """
         new = self.value()
