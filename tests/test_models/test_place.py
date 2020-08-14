@@ -13,6 +13,12 @@ class test_Place(test_basemodel):
         self.name = "Place"
         self.value = Place
 
+    def test_place_pep8(self):
+        """test_base_pep8 test"""
+        pep8style = pep8.StyleGuide(quiet=True)
+        result = pep8style.check_files(['./models/place.py'])
+        self.assertEqual(result.total_errors, 0)
+
     def test_city_id(self):
         """ """
         new = self.value()
@@ -67,3 +73,11 @@ class test_Place(test_basemodel):
         """ """
         new = self.value()
         self.assertEqual(type(new.amenity_ids), list)
+
+    def test_place_inheritance(self):
+        """test_place_inheritance test
+        Test instance class
+        """
+        my_place = Place()
+        self.assertIsInstance(my_place, Place)
+        self.assertIsInstance(my_place, BaseModel)

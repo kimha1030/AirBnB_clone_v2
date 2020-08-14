@@ -13,6 +13,12 @@ class test_User(test_basemodel):
         self.name = "User"
         self.value = User
 
+    def test_user_pep8(self):
+        """test_base_pep8 test"""
+        pep8style = pep8.StyleGuide(quiet=True)
+        result = pep8style.check_files(['./models/user.py'])
+        self.assertEqual(result.total_errors, 0)
+
     def test_first_name(self):
         """ """
         new = self.value()

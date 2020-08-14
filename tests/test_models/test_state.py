@@ -13,6 +13,12 @@ class test_state(test_basemodel):
         self.name = "State"
         self.value = State
 
+    def test_state_pep8(self):
+        """test_base_pep8 test"""
+        pep8style = pep8.StyleGuide(quiet=True)
+        result = pep8style.check_files(['./models/state.py'])
+        self.assertEqual(result.total_errors, 0)
+
     def test_name3(self):
         """ """
         new = self.value()
