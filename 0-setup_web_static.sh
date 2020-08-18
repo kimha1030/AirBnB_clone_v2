@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Task 0
+# Task 0: Prepare your web servers
 sudo apt-get -y update
 sudo apt-get -y install nginx
 sudo mkdir -p "/data/web_static/shared/"
