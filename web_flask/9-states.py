@@ -21,6 +21,7 @@ def list_states(id):
     """Function that return states according id"""
     states = storage.all(State).values()
     ban = False
+    name_st = ""
     for state in states:
         if id in state.id:
             ban = True
