@@ -18,17 +18,17 @@ def states():
 
 @app.route('/states/<id>', strict_slashes=False)
 def list_states(id):
-    """Function that return states"""
+    """Function that return states according id"""
     states = storage.all(State).values()
-    vals = None
-    for s in states:
-        if id in s.id:
-            vals = s
-            ban = 1
+    ban = False
+    for state in states:
+        if id in state.id:
+            ban = True
+            name_st = state
             break
         else:
-            ban = 0
-    return render_template('9-states.html', vals=vals)
+            ban = False
+    return render_template('9-states.html', name_st=name_st, ban=ban)
 
 
 @app.teardown_appcontext
