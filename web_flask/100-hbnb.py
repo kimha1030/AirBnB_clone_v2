@@ -1,24 +1,27 @@
 #!/usr/bin/python3
-"""Task 6"""
+"""Task Advanced"""
 from flask import Flask
 from flask import render_template
 from models import storage
 from models.state import State
 from models.city import City
 from models.amenity import Amenity
+from models.place import Place
 
 app = Flask(__name__)
 
 
-@app.route('/hbnb_filters', strict_slashes=False)
+@app.route('/hbnb', strict_slashes=False)
 def states():
-    """Function that return states and amenities"""
+    """Function that return states, amenities and places"""
     states = storage.all(State).values()
     amenities = storage.all(Amenity).values()
+    places = storage.all(Place).values()
     return render_template(
-        '10-hbnb_filters.html',
+        '100-hbnb.html',
         states=states,
-        amenities=amenities)
+        amenities=amenities,
+        places=places)
 
 
 @app.teardown_appcontext

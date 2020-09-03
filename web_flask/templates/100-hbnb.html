@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AirBnb clone</title>
+    <title>AirBnB clone</title>
     <link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles/4-common.css') }}">
     <link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles/3-header.css') }}">
     <link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles/6-filters.css') }}">
     <link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles/3-footer.css') }}">
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles/8-places.css') }}">
     <link rel=icon type=image/png href="{{ url_for('static', filename='./images/icon.png') }}">
 </head>
 <body>
@@ -42,6 +43,41 @@
                 </ul>
             </div>
             <button class="button-filter">Search</button>
+        </section>
+        <section class="places">
+            <h1>Places</h1>
+            {% for p in places|sort(attribute="name") %}
+            <article class="site one">
+                <div class="info">
+                    <h2>{{ p.name }}</h2>
+                    <div class="price_by_night">
+                        <p>${{ p.price_by_night }}</p>
+                    </div>
+                </div>
+                <div class="information">
+                    <div class="max_guest">
+                        <div class="icon_guests"></div>
+                        <p>{{ p.max_guest }} Guests</p>
+                    </div>
+                    <div class="number_rooms">
+                        <div class="icon_bedrooms"></div>
+                        <p>{{ p.number_rooms }} Bedroom</p>
+                    </div>
+                    <div class="number_bathrooms">
+                        <div class="icon_bathrooms"></div>
+                        <p>{{ p.number_bathrooms }} Bathroom</p>
+                    </div>
+                </div>
+                <div class="user">
+                    <p><span class="text_owner">Owner: </span>{{ p.user.first_name }}</p>
+                </div>
+                <div class="description">
+                    {% autoescape false %}
+                    <p>{{ p.description }}</p>
+                    {% endautoescape %}
+                </div>
+            </article>
+            {% endfor %}
         </section>
     </div>
     <footer>
